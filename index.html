@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="css/flags.css" rel="stylesheet" media="all">
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="js/data.js"></script>
+<style>
+
+table.list {
+	 border:2px black solid;
+}
+table.list th {
+	border:1px black solid;
+	width: 35px;
+	text-align: center;
+}
+table.list th.country {
+	width: 250px;
+}
+table.list td {
+	border:1px black solid;
+	width: 35px;
+	text-align: center;
+}
+table.list td.country {
+	text-align: left;
+	padding-left: 10px;
+	font-size: 14px;
+}
+table.list td.country img {
+	margin-right: 5px;
+}
+table.list td.country img.flag-ch {
+	width: 11px;
+	margin-right: 10px;
+}
+table.list img.area {
+	width: 50px;
+	height: 25px;
+}
+table.list img.city,
+table.list img.not-city {
+	width: 50px;
+	height: 25px;
+}
+table.list img.expressway {
+	height: 50px;
+	width: 50px;
+}
+table.list img.motorway {
+	height: 50px;
+	width: 50px;
+}
+h2 {
+	text-align: center;
+}
+p {
+	font-weight: bold;
+}
+p.note {
+	padding-left: 20px;
+}
+div.note {
+	padding-left: 20px;
+}
+div.note img {
+	margin-right: 5px;
+}
+.cargo {
+	vertical-align: middle;
+}
+img.cargo {
+	height: 35px;
+}
+.adr {
+	vertical-align: middle;
+}
+img.adr {
+	height: 45px;
+	width: 45px;
+}
+</style>
+</head>
+<body>
+<div id="countries">
+<p>
+<input type="checkbox" name="ets2_only"/>Show ETS2 only
+</p>
+</div>
+<div id="speed_dimension">
+<p>
+Speed limits in:
+<input type="radio" name="speed_dimension" value="kmph" checked="checked"/>km/h
+<input type="radio" name="speed_dimension" value="mph" />mph
+</p>
+</div>
+<div id="filter_cargo">
+<p>
+<input type="checkbox" name="filter_cargo"/>Filter by cargo
+</p>
+</div>
+<div id="cargo">
+<p>
+Type of cargo:
+<input type="radio" class="cargo" name="cargo" value="empty" checked="checked"/><img src="img/cargo_e.png" class="cargo" alt="w/o trailer" title="Without trailer"/>
+<input type="radio" class="cargo" name="cargo" value="normal"/><img src="img/cargo_n.png" class="cargo" alt="normal" title="Normal load"/>
+<input type="radio" class="cargo" name="cargo" value="long"/><img src="img/cargo_l.png" class="cargo" alt="long load" title="Long load"/>
+<input type="radio" class="cargo" name="cargo" value="adr"/><img src="img/cargo_d.png" class="cargo" alt="adr" title="ADR"/>
+</p>
+</div>
+<div id="adr_class">
+<p>
+ADR class:<br/>
+<div class="ets2">
+Class 1: 
+<input type="radio" name="adr_class" class="adr ets2" value="1" checked="checked"/><img src="img/ADR_1.png" class="adr ets2" alt="Class 1" title="Class 1 - Explosive substances and articles"/>
+</div>
+<div class="ets2">
+Class 2: 
+<input type="radio" name="adr_class" class="adr" value="2.1"/><img src="img/ADR_2.1.png" class="adr" alt="Class 2.1" title="Class 2.1 - Flammable gases"/>
+<input type="radio" name="adr_class" class="adr ets2" value="2.2"/><img src="img/ADR_2.2.png" class="adr ets2" alt="Class 2.2" title="Class 2.2 - Non-toxic and non-flammable gases"/>
+<input type="radio" name="adr_class" class="adr" value="2.3"/><img src="img/ADR_2.3.png" class="adr" alt="Class 2.3" title="Class 2.3 - Poison gases"/>
+</div>
+<div class="ets2">
+Class 3: 
+<input type="radio" name="adr_class" class="adr ets2" value="3"/><img src="img/ADR_3.png" class="adr ets2" alt="Class 3" title="Class 3 - Flammable liquids"/>
+</div>
+<div class="ets2">
+Class 4: 
+<input type="radio" name="adr_class" class="adr" value="4.1"/><img src="img/ADR_4.1.png" class="adr" alt="Class 4.1" title="Class 4.1 - Flammable solids, self-reactive substances and solid desensitized explosives"/>
+<input type="radio" name="adr_class" class="adr" value="4.2"/><img src="img/ADR_4.2.png" class="adr" alt="Class 4.2" title="Class 4.2 - Substances liable to spontaneous combustion"/>
+<input type="radio" name="adr_class" class="adr ets2" value="4.3"/><img src="img/ADR_4.3.png" class="adr ets2" alt="Class 4.3" title="Class 4.3 - Substances which, in contact with water, emit flammable gases"/>
+</div>
+<div class="">
+Class 5: 
+<input type="radio" name="adr_class" class="adr" value="5.1"/><img src="img/ADR_5.1.png" class="adr" alt="Class 5.1" title="Class 5.1 - Oxidizing substances"/>
+<input type="radio" name="adr_class" class="adr" value="5.2"/><img src="img/ADR_5.2.png" class="adr" alt="Class 5.2" title="Class 5.2 - Organic peroxides"/>
+</div>
+<div class="ets2">
+Class 6: 
+<input type="radio" name="adr_class" class="adr ets2" value="6.1"/><img src="img/ADR_6.1.png" class="adr ets2" alt="Class 6.1" title="Class 6.1 - Toxic substances"/>
+<input type="radio" name="adr_class" class="adr" value="6.2"/><img src="img/ADR_6.2.png" class="adr" alt="Class 6.2" title="Class 6.2 - Infectious substances"/>
+</div>
+<div class="">
+Class 7: 
+<input type="radio" name="adr_class" class="adr" value="7"/><img src="img/ADR_7.png" class="adr" alt="Class 7" title="Class 7 - Radioactive material"/>
+</div>
+<div class="ets2">
+Class 8: 
+<input type="radio" name="adr_class" class="adr ets2" value="8"/><img src="img/ADR_8.png" class="adr ets2" alt="Class 8" title="Class 8 - Corrosive substances"/>
+</div>
+<div class="">
+Class 9: 
+<input type="radio" name="adr_class" class="adr" value="9"/><img src="img/ADR_9.png" class="adr" alt="Class 9" title="Class 9 - Miscellaneous dangerous 
+substances and articles"/>
+</div>
+</p>
+</div>
+<div id="mass">
+<p>
+Mass (in tonn):
+<input type="radio" name="mass" value="1" checked="checked"/>3.5-7.5
+<input type="radio" name="mass" value="2"/>7.5-12
+<input type="radio" name="mass" value="3"/>&gt;12
+</p>
+</div>
+<table>
+<tr>
+<td>
+<table class="list">
+<tr>
+	<th class="country" rowspan="2">country</th>
+	<th rowspan="2"><img src="img/road_urban.png" class="area city" alt="city" /></th>
+	<th colspan="2"><img src="img/road_non-urban.png" class="area not-city" alt="Not city" /></th>
+	<th rowspan="2"><img src="img/road_expressway.png" class="area expressway" alt="expressway" /></th>
+	<th rowspan="2"><img src="img/road_motorway.png" class="area motorway" alt="motorway" /></th>
+</tr>
+<tr>
+	<td><img src="img/road_oneway.png" class="area" alt="Single carriageway" /></td>
+	<td><img src="img/road_dualway.png" class="area" alt="Dual carriageway" /></td>
+</tr>
+
+</table>
+</td>
+<td>
+<p class="note">
+<br/>
+(E) - without trailer<br/>
+(L) - Long Loads<br/>
+(D) - Dangerous Goods<br/>
+(DN) - Dangerous Goods Class N<br/>
+(>N) - Transport over N tonnes<br/>
+<br/>
+max 90 km/h (55 mph) for Dangerous Goods, except <img src="img/blank.gif" class="flag flag-fr" alt="France" />France<br/>
+</p>
+<div class="note ets2"><img src="img/blank.gif" class="flag flag-fr" alt="France" />France - max 80 km/h (50 mph) in left lane</div>
+<div class="note ets2"><img src="img/blank.gif" class="flag flag-fr" alt="France" />France * - 70 km/h (45 mph) with ABS only</div>
+<div class="note"><img src="img/blank.gif" class="flag flag-ie" alt="Ireland" />Ireland * - no enter in left lane</div>
+<div class="note ets2"><img src="img/blank.gif" class="flag flag-it" alt="Italy" />Italy - in fog max 50 km/h (30 mph)</div>
+<div class="note ets2"><img src="img/blank.gif" class="flag flag-lu" alt="Luxembourg" />Luxembourg * - in rain max 75 km/h (47 mph)</div>
+<div class="note"><img src="img/blank.gif" class="flag flag-mc" alt="Monaco" />Monaco - depend from time, weight, long and etc</div>
+<div class="note"><img src="img/blank.gif" class="flag flag-sm" alt="San Marino" />San Marino - like in <img src="img/blank.gif" class="flag flag-it" alt="Italy" />Italy</div>
+<div class="note"><img src="img/blank.gif" class="flag flag-tr" alt="Turkey" />Turkey * - min 40 km/h (25 mph)</div>
+</td>
+</tr>
+</table>
+</body>
+</html>
