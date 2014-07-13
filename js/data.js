@@ -27,6 +27,7 @@ function fillData()
 				case "96": values[i] = 60; break;
 				case "100": values[i] = 62; break;
 				case "110": values[i] = 68; break;
+				case "112": values[i] = 70; break;
 				default: values[i] = Math.round( values[i] / 1.609 ); break;
 			}
 		}
@@ -262,7 +263,10 @@ function fillData()
 	addSpeed("Ukraine", getObjSpeed("60", "70", "70", "90", "90"));
 
 	addCountry("United Kingdom", "gb", true);
-	addSpeed("United Kingdom", getObjSpeed("48", "64", "80", "80", "96"));
+	addSpeed("United Kingdom", getObjSpeed("48", "80", "96", "96", "96"), getObjLoad(false, undefined, 3.5, 7.5));
+	addSpeed("United Kingdom", getObjSpeed("48", "64", "80", "80", "96"), getObjLoad(false, undefined, 7.5, NaN));
+	addSpeed("United Kingdom", getObjSpeed("48", "80", "96", "96", "112"), getObjLoad(true, undefined, 3.5, 7.5));
+	addSpeed("United Kingdom", getObjSpeed("48", "64", "80", "80", "96"), getObjLoad(true, undefined, 7.5, NaN));
 
 }
 
