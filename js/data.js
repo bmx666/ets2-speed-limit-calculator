@@ -317,7 +317,7 @@ function fillTable()
 	var is_no_trailer 	= (0 === cargo_type.localeCompare("empty"));
 	var is_normal 		= (0 === cargo_type.localeCompare("normal"));
 	var is_long 		= (0 === cargo_type.localeCompare("long"));
-	var is_adr			= (0 === cargo_type.localeCompare("adr"));
+	var is_adr		= (0 === cargo_type.localeCompare("adr"));
 	var adr_class 		= undefined;
 
 	var min_mass 		= undefined;
